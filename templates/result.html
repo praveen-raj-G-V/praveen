@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='result.css')}}">
+    <title>Diabetes Prediction Results</title>
+</head>
+<body>
+    <h1>Diabetes Prediction Results</h1>
+    <div class="result-container animated">
+        <p class="result-text">{{ result }}</p>
+        {% if result == "The model predicts that the person is diabetic." %}
+            <p class="result-details">Risk Level: 
+                {{ risk_level }}</p>
+            <p class="result-details">Diabetes Type: {{ diabetes_type }}</p>
+            <p class="result-details">Recommendations:</p>
+            <ul class="recommendations">
+                {% for recommendation in recommendations %}
+                    <li>{{ recommendation }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %} 
+</body>
+</html>
